@@ -1,17 +1,17 @@
-var builder = WebApplication.CreateBuilder(args);
+namespace RazorRender;
 
-// Add services to the container.
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args)
+            .Build()
+            .Run();
+    }
 
-builder.Services.AddControllers();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        return Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+    }
+}
