@@ -4,6 +4,9 @@ using RazorRender.Services.Interfaces;
 
 namespace RazorRender.Controllers;
 
+/// <summary>
+/// Controller for rendering email templates.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class EmailController : ControllerBase
@@ -28,6 +31,10 @@ public class EmailController : ControllerBase
         _templateSourceService = templateSourceService;
     }
 
+    /// <summary>
+    /// Renders an email template using Razor views.
+    /// </summary>
+    /// <returns></returns>
     [HttpGet("razor")]
     public async Task<IActionResult> RazorRenderAsync()
     {
@@ -35,6 +42,10 @@ public class EmailController : ControllerBase
         return Content(html, "text/html");
     }
 
+    /// <summary>
+    /// Renders an email template using RazorLight.
+    /// </summary>
+    /// <returns></returns>
     [HttpGet("razor-light")]
     public async Task<IActionResult> RazorLightRenderAsync()
     {

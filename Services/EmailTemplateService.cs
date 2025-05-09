@@ -14,6 +14,14 @@ public class EmailTemplateService : IEmailTemplateService
 
     public Task<string> RenderTemplateAsync<T>(string template, T model)
     {
-        return _engine.CompileRenderStringAsync("templateKey", template, model);
+        var templateKey = GenerateTemplateKey(template);
+
+        return _engine.CompileRenderStringAsync(templateKey, template, model);
+    }
+
+    private static string GenerateTemplateKey(string templateName)
+    {
+        // Use a hash to create a unique key for the template
+        return $"template_{templateName.GetHashCode()}";
     }
 }
