@@ -1,11 +1,11 @@
 @using RazorRender.Models
 @model EmailModel
-<h1>Welcome, @Model.Name!</h1>
-<p>Your email: @Model.Email</p>
-<p>Your items:</p>
-<ul>
-    @foreach (var item in Model.Items)
-    {
-        <li>@item</li>
-    }
+<h1 style="font-family: Arial, sans-serif; color: #4CAF50;">Welcome, @Model.Name!</h1>
+<p style="font-family: Arial, sans-serif; color: #555;">Your email: <strong>@Model.Email</strong></p>
+<p style="font-family: Arial, sans-serif; color: #555;">Your items:</p>
+<ul style="font-family: Arial, sans-serif; color: #333; list-style-type: square; padding-left: 20px;">
+  @foreach (var item in Model.Items)
+  {
+      <li style="font-family: Arial, sans-serif; color: #4CAF50;">@item</li>
+  }
 </ul>
