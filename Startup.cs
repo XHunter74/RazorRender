@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.OpenApi.Models;
+using RazorLight;
 using RazorRender.Services;
 using RazorRender.Services.Interfaces;
 using System.Reflection;
@@ -23,7 +24,18 @@ public class Startup
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
         services.AddScoped<IViewRenderService, ViewRenderService>();
-        //services.AddScoped<IRazorViewEngine, RazorViewEngine>();
+
+        services.AddScoped<RazorLightEngine>(e =>
+        {
+            var engine = new RazorLightEngineBuilder()
+                .UseMemoryCachingProvider()
+                .Build();
+            return engine;
+        });
+
+        services.AddScoped<IEmailTemplateService, EmailTemplateService>();
+        services.AddScoped<ITemplateSourceService, TemplateSourceService>();
+
 
 
         services.AddEndpointsApiExplorer();
