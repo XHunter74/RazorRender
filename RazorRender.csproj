@@ -11,4 +11,10 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Update="Views\Emails\Welcome.cshtml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
 </Project>

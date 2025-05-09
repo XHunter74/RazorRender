@@ -1,4 +1,7 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.OpenApi.Models;
+using RazorRender.Services;
 using System.Reflection;
 
 namespace RazorRender;
@@ -14,8 +17,14 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
-        
+        services.AddControllersWithViews();
+        services.AddRazorPages();
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+        services.AddScoped<IViewRenderService, ViewRenderService>();
+        //services.AddScoped<IRazorViewEngine, RazorViewEngine>();
+
+
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(c =>
         {

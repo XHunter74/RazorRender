@@ -1,0 +1,11 @@
+@using RazorRender.Models
+@model EmailModel
+<h1>Welcome, @Model.Name!</h1>
+<p>Your email: @Model.Email</p>
+<p>Your items:</p>
+<ul>
+    @foreach (var item in Model.Items)
+    {
+        <li>@item</li>
+    }
+</ul>
