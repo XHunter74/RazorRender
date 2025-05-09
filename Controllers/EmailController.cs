@@ -11,11 +11,17 @@ public class EmailController : ControllerBase
     private readonly IViewRenderService _viewRenderService;
     private readonly IEmailTemplateService _emailTemplateService;
     private readonly ITemplateSourceService _templateSourceService;
+    private readonly EmailModel _emailModel = new()
+    {
+        Name = "Serhiy",
+        Email = "test@example.com",
+        Items = ["Item1", "Item2", "Item3"]
+    };
 
     public EmailController(
-        IViewRenderService viewRenderService,
-        IEmailTemplateService emailTemplateService,
-        ITemplateSourceService templateSourceService)
+            IViewRenderService viewRenderService,
+            IEmailTemplateService emailTemplateService,
+            ITemplateSourceService templateSourceService)
     {
         _viewRenderService = viewRenderService;
         _emailTemplateService = emailTemplateService;
@@ -25,13 +31,7 @@ public class EmailController : ControllerBase
     [HttpGet("razor")]
     public async Task<IActionResult> RazorRenderAsync()
     {
-        var emailModel = new EmailModel
-        {
-            Name = "Serhiy",
-            Email = "test@example.com",
-            Items = ["Item1", "Item2", "Item3"]
-        };
-        var html = await _viewRenderService.RenderToStringAsync("Emails/Welcome", emailModel);
+        var html = await _viewRenderService.RenderToStringAsync("Emails/Welcome", _emailModel);
         return Content(html, "text/html");
     }
 
@@ -39,13 +39,7 @@ public class EmailController : ControllerBase
     public async Task<IActionResult> RazorLightRenderAsync()
     {
         var template = await _templateSourceService.GetTemplateSourceAsync("Emails/Welcome");
-        var emailModel = new EmailModel
-        {
-            Name = "Serhiy",
-            Email = "test@example.com",
-            Items = ["Item1", "Item2", "Item3"]
-        };
-        var html = await _emailTemplateService.RenderTemplateAsync(template, emailModel);
+        var html = await _emailTemplateService.RenderTemplateAsync(template, _emailModel);
         return Content(html, "text/html");
     }
 }
