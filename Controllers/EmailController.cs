@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RazorRender.Models;
-using RazorRender.Services;
+using RazorRender.Services.Interfaces;
 
 namespace RazorRender.Controllers;
 
