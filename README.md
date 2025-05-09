@@ -43,6 +43,18 @@
 - Comparing Razor view engine and RazorLight
 - Learning about view rendering in ASP.NET Core
 
+## Notes
+
+You can implement a custom `ITemplateSourceService` to retrieve Razor template sources from a database instead of the file system. This allows dynamic template management and storage. To do this:
+
+- Create a new implementation of `ITemplateSourceService` that queries your database for the template content by name or key.
+- Register your implementation in `Startup.cs` or `Program.cs` using dependency injection.
+- Update your services or controllers to use the new service as needed.
+
+This approach enables storing and editing templates in a database, supporting scenarios like user-customizable templates or admin-managed content.
+
 ---
 
 This project is for demonstration and testing purposes.
+
+Copyright (c) 2025 Serhiy Krasovskyy xhunter74@gmail.com
