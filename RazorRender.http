@@ -1,0 +1,9 @@
+﻿@RazorRender_HostAddress = https://localhost:7039
+
+GET {{RazorRender_HostAddress}}/api/email/razor-light
+
+###
+
+GET {{RazorRender_HostAddress}}/api/email/razor
+
+###
