@@ -3,11 +3,11 @@ using RazorRender.Services.Interfaces;
 
 namespace RazorRender.Services;
 
-public class EmailTemplateService : IEmailTemplateService
+public class RazorLightRenderService : ITemplateRenderService
 {
     private readonly RazorLightEngine _engine;
 
-    public EmailTemplateService(RazorLightEngine engine)
+    public RazorLightRenderService(RazorLightEngine engine)
     {
         _engine = engine;
     }

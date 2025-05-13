@@ -8,13 +8,13 @@ using RazorRender.Services.Interfaces;
 
 namespace RazorRender.Services;
 
-public class ViewRenderService : IViewRenderService
+public class RazorRenderService : IViewRenderService
 {
     private readonly IRazorViewEngine _viewEngine;
     private readonly ITempDataProvider _tempDataProvider;
     private readonly IServiceProvider _serviceProvider;
 
-    public ViewRenderService(IRazorViewEngine viewEngine, ITempDataProvider tempDataProvider, IServiceProvider serviceProvider)
+    public RazorRenderService(IRazorViewEngine viewEngine, ITempDataProvider tempDataProvider, IServiceProvider serviceProvider)
     {
         _viewEngine = viewEngine;
         _tempDataProvider = tempDataProvider;

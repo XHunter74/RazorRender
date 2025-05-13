@@ -23,7 +23,7 @@ public class Startup
         services.AddRazorPages();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
-        services.AddScoped<IViewRenderService, ViewRenderService>();
+        services.AddScoped<IViewRenderService, RazorRenderService>();
 
         services.AddScoped<RazorLightEngine>(e =>
         {
@@ -33,7 +33,7 @@ public class Startup
             return engine;
         });
 
-        services.AddScoped<IEmailTemplateService, EmailTemplateService>();
+        services.AddScoped<ITemplateRenderService, RazorLightRenderService>();
         services.AddScoped<ITemplateSourceService, TemplateSourceService>();
 
 

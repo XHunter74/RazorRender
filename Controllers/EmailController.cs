@@ -12,7 +12,7 @@ namespace RazorRender.Controllers;
 public class EmailController : ControllerBase
 {
     private readonly IViewRenderService _viewRenderService;
-    private readonly IEmailTemplateService _emailTemplateService;
+    private readonly ITemplateRenderService _emailTemplateService;
     private readonly ITemplateSourceService _templateSourceService;
     private readonly EmailModel _emailModel = new()
     {
@@ -23,7 +23,7 @@ public class EmailController : ControllerBase
 
     public EmailController(
             IViewRenderService viewRenderService,
-            IEmailTemplateService emailTemplateService,
+            ITemplateRenderService emailTemplateService,
             ITemplateSourceService templateSourceService)
     {
         _viewRenderService = viewRenderService;
